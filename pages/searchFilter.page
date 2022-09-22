@@ -1,10 +1,10 @@
 <apex:page Controller="ContactController" action="{!getContacts}" showHeader="false" standardStylesheets="false" sidebar="false" applyHtmlTag="false" applyBodyTag="false" docType="html-5.0">
     <html xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" lang="en">
         <head>
-            <meta charset="utf-8" />
-            <meta http-equiv="x-ua-compatible" content="ie=edge" />
-            <meta name="viewport" content="width=device-width, initial-scale=1" />
-            <apex:slds />
+            <meta charset="utf-8"/>
+            <meta http-equiv="x-ua-compatible" content="ie=edge"/>
+            <meta name="viewport" content="width=device-width, initial-scale=1"/>
+            <apex:slds/>
         </head>
         <body>
             <div class="slds slds-scope">
@@ -22,14 +22,14 @@
                                                         id="theSearchString"
                                                         maxlength="70"
                                                         size="80"
-                                                        styleClass="slds-input " />
+                                                        styleClass="slds-input "/>
                                     </div>
                                 </div> 
                                 <apex:CommandButton styleClass="slds-button slds-button_brand slds-m-left_large" 
                                                     Id="btnSearch"
                                                     action="{!searchContacts}"
                                                     rerender="ReservationsBlock"
-                                                    value="Find" />
+                                                    value="Find"/>
                             </div>
                         </div>
                     </apex:pageBlock><br/>

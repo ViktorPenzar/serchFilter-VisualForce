@@ -1,0 +1,62 @@
+<apex:page Controller="ContactController" action="{!getContacts}" showHeader="false" standardStylesheets="false" lightningStylesheets="false" sidebar="false" applyHtmlTag="false" applyBodyTag="false" docType="html-5.0">
+    <html xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" lang="en">
+        <head>
+            <meta charset="utf-8" />
+            <meta http-equiv="x-ua-compatible" content="ie=edge" />
+            <meta name="viewport" content="width=device-width, initial-scale=1" />
+            <apex:slds />
+        </head>
+        <body>
+            <div class="slds slds-scope">
+                <apex:form >
+                    <apex:pageBlock >
+                        <div class="slds slds-scope slds-grid slds-col slds-has-flexi-truncate slds-media slds-no-space slds-grow ">
+                            <apex:outputText value="Search by Name:"></apex:outputText>
+                            <div class="slds-align_absolute-center">   
+                                <div class="slds-form-element">
+                                    <div class="slds-form-element__control slds-input-has-icon slds-input-has-icon_left-right">
+                                        <svg class="slds-icon slds-input__icon slds-input__icon_left slds-icon-text-default" aria-hidden="true">
+                                            <use xlink:href="/_slds/icons/utility-sprite/svg/symbols.svg#search"></use>
+                                        </svg>
+                                        <apex:inputText value="{!searchKey}" id="theSearchString" maxlength="70" size="80" styleClass="slds-input " />
+                                    </div>
+                                </div> 
+                                <apex:CommandButton styleClass="slds-button slds-button_brand slds-m-left_large" Id="btnSearch" action="{!searchContacts}" rerender="ReservationsBlock" value="Find" />
+                            </div>
+                        </div>
+                    </apex:pageBlock><br/>
+                    <apex:pageBlock id="ReservationsBlock">
+                        <div class="slds-grid">
+                            <apex:pageBlockTable value="{!contacts}" var="contact" styleClass="slds-table slds-table--bordered">
+                                <apex:column >
+                                    <apex:facet name="header">First Name</apex:facet>
+                                    <apex:outputText value="{!contact.FirstName}"/>
+                                </apex:column>
+                                <apex:column >
+                                    <apex:facet name="header">Last Name</apex:facet>
+                                    <apex:outputText value="{!contact.LastName}"/>
+                                </apex:column>
+                                <apex:column >
+                                    <apex:facet name="header">Email</apex:facet>
+                                    <apex:outputField value="{!contact.Email}"/>
+                                </apex:column>
+                                <apex:column >
+                                    <apex:facet name="header">Mobile Phone</apex:facet>
+                                    <apex:outputField value="{!contact.MobilePhone}"/>
+                                </apex:column>
+                                <apex:column >
+                                    <apex:facet name="header">Account Name</apex:facet>
+                                    <apex:outputLink target="_blank" value="/{!contact.AccountId}">{!contact.Account.Name}</apex:outputLink>
+                                </apex:column>
+                                <apex:column >
+                                    <apex:facet name="header">Created Date</apex:facet>
+                                    <apex:outputField value="{!contact.CreatedDate}"/>
+                                </apex:column>
+                            </apex:pageBlockTable>
+                        </div>
+                    </apex:pageBlock>
+                </apex:form>
+            </div>
+        </body>
+    </html>
+</apex:page>
